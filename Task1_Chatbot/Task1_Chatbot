@@ -1,0 +1,41 @@
+# simple rule based chatbot
+
+def chatbot_response(user_input):
+    # make everything lowercase so it matches easily
+    user_input = user_input.lower()
+
+    
+    if "hello" in user_input or "hi" in user_input:
+        return "Hello! How can I help you today?"
+
+    elif "who are you" in user_input:
+        return "I am just a basic chatbot made in python."
+
+    # check time
+    elif "time" in user_input:
+        import datetime
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        return "The time is " + current_time
+
+    # check date
+    elif "date" in user_input:
+        import datetime
+        today_date = datetime.datetime.now().strftime("%Y-%m-%d")
+        return "Today's date is " + today_date
+
+    elif "bye" in user_input:
+        return "Bye! Have a nice day :)"
+
+    else:
+        return "Sorry, I dont understand that."
+
+print("Chatbot: Hello! (type bye to exit)")
+
+while True:
+    user = input("You: ")
+    if "bye" in user.lower():
+        print("Chatbot:", chatbot_response(user))
+        break
+    else:
+        print("Chatbot:", chatbot_response(user))
+
